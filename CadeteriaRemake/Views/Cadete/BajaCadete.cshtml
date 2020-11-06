@@ -1,5 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<CadeteriaRemake.Entidades.Cadete>
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <table class="table table-striped">
+            <tr>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Eliminar</th>
+            </tr>
+            @foreach (var cadete in Model)
+            {
+        <tr>
+
+            <td>@cadete.Nombre</td>
+            <td>@cadete.Direccion</td>
+            <td>@cadete.Telefono</td>
+            <td><button class="btn btn-sm btn-danger" asp-controller="Cadete" asp-action="EliminarCadete" asp-route-id="@cadete.Id">🗑️</button></td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>
