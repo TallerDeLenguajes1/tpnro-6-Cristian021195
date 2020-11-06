@@ -16,7 +16,12 @@
             <td>@cadete.Nombre</td>
             <td>@cadete.Direccion</td>
             <td>@cadete.Telefono</td>
-            <td><button class="btn btn-sm btn-danger" asp-controller="Cadete" asp-action="EliminarCadete" asp-route-id="@cadete.Id">🗑️</button></td>
+            <td>
+                <form asp-action="EliminarCadete" asp-controller="Cadete" method="post" asp-route-id="@cadete.Id">
+                    <button class="btn btn-sm btn-danger">🗑️</button>
+                </form>
+            </td>
+            
         </tr>
             }
         </table>
