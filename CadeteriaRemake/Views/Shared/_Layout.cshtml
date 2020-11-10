@@ -9,57 +9,66 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CadeteriaRemake</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-info" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-info" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <div class="dropdown">
-                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cadetes
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="Index">Formulario</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="ListadoCadete">Listado de Cadetes</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="BajaCadete">Baja</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="ModificacionCadete">Modificacion</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Clientes
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="AltaCliente">Alta</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="BajaCliente">Baja</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="ModificacionCliente">Modificacion</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pedidos
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="AltaPedido">Alta</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="BajaPedido">Baja</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="ModificacionPedido">Modificacion</a>
-                            </div>
-                        </div>
-                    </ul>
+        <div class="container-fluid bg-primary">
+            <nav class="container navbar navbar-expand-lg navbar-dark bg-primary" data-toggle-duration="300" data-side-color="dark" data-letter-color="">
+                <!--Podemos dejar los data vacios-->
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="btn btn-transparent" type="button">
+                        <!-- navbar-toggler => btn btn-transparent -->
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="d-none" id="navbarSupportedContent">
+                        <!-- collapse navbar-collapse => d-none -->
+                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-expanded="false">
+                                    Cadetes
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="Index">Listado de Cadetes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="AgregarCadete">Alta</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="BajaCadete">Modificacion y Baja</a>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-expanded="false">
+                                    Clientes
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="Index">Listado de Clientes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="AgregarCliente">Alta</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="BajaModificacion">Modificacion y Baja</a>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-expanded="false">
+                                    Pedidos
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="AltaPedido">Alta</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="BajaPedido">Baja</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="ModificacionPedido">Modificacion</a>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

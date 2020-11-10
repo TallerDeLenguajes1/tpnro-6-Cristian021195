@@ -16,7 +16,7 @@ namespace CadeteriaRemake.Entidades
         private string numero;
         private string observacion;
         private tipo_pedido tipoPedido;
-        private bool estado;
+        private bool estado_pedido;
         private bool cupon;
         private Cliente cliente;
 
@@ -27,7 +27,7 @@ namespace CadeteriaRemake.Entidades
         public string Numero { get => numero; set => numero = value; }
         public string Observacion { get => observacion; set => observacion = value; }
         internal tipo_pedido TipoPedido { get => tipoPedido; set => tipoPedido = value; }
-        public bool Estado { get => estado; set => estado = value; }
+        public bool Estado_pedido { get => estado_pedido; set => estado_pedido = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
         public bool Cupon { get => cupon; set => cupon = value; }
 

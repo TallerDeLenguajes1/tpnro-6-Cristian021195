@@ -10,11 +10,13 @@ namespace CadeteriaRemake.Entidades
         private string nombre;
         private string direccion;
         private string telefono;
+        private int estado;
 
         public string Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public string Telefono { get => telefono; set => telefono = value; }
+        public int Estado { get => estado; set => estado = value; }
 
         public virtual string Presertarse() {
             return "Hola soy una persona";

@@ -1,0 +1,25 @@
+﻿@model CadeteriaRemake.Entidades.Cliente;
+<!--<h3>Se cargo el usuario <span class="text-info">Model.Nombre</span> a la base de datos</h3>-->
+<form asp-action="ModificacionCliente" method="post" class="form col-sm-12 col-md-8 col-lg-6 mx-auto shadow p-3 mb-4 bg-white rounded aplicable">
+    <div class="form-group">
+        <label asp-for="Nombre">Nombre</label>
+        <input type="text" asp-for="Nombre" value="@Model.Nombre" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Direccion">Direccion</label>
+        <input type="text" asp-for="Direccion" value="@Model.Direccion" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Telefono">Telefono</label>
+        <input type="text" asp-for="Telefono" value="@Model.Telefono" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Estado">Estado</label>
+        <select asp-for="Estado" class="form-control">
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+    </div>
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <button type="submit" class="btn btn-block btn-primary">Modificar</button>
+</form>

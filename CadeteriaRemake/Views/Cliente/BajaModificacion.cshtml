@@ -1,0 +1,33 @@
+﻿@model List<CadeteriaRemake.Entidades.Cliente>
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <table class="table table-striped">
+            <tr>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+            </tr>
+            @foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Direccion</td>
+                    <td>@cliente.Telefono</td>
+                    <td>
+                        <form asp-action="EliminarCliente" asp-controller="Cliente" method="post" asp-route-id="@cliente.Id">
+                            <button class="btn btn-sm btn-danger">🗑️</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="ObtenerCliente" asp-controller="Cliente" method="post" asp-route-id="@cliente.Id">
+                            <button class="btn btn-sm btn-warning">✏️</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

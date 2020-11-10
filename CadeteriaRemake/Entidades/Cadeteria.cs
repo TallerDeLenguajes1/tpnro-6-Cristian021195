@@ -24,7 +24,7 @@ namespace CadeteriaRemake.Entidades
             foreach (Cadete e in Cadetes) {
                 Console.WriteLine("CADETE: {0} ({1}):", e.Nombre, e.Id);
                 foreach (Pedido p in e.Pedidos) {
-                    if (p.Estado) {
+                    if (p.Estado_pedido) {
                         entregados++;
                         jornal += p.costo();
                     }
@@ -40,7 +40,7 @@ namespace CadeteriaRemake.Entidades
             {
                 foreach (Pedido p in e.Pedidos)
                 {
-                    if (p.Estado)
+                    if (p.Estado_pedido)
                     {
                         entregados++;
                     }
@@ -54,7 +54,7 @@ namespace CadeteriaRemake.Entidades
             {
                 foreach (Pedido p in e.Pedidos)
                 {
-                    if (p.Estado)
+                    if (p.Estado_pedido)
                     {
                         entregados++;
                     }
@@ -74,7 +74,7 @@ namespace CadeteriaRemake.Entidades
             {
                 foreach (Pedido p in e.Pedidos)
                 {
-                    if (p.Estado)
+                    if (p.Estado_pedido)
                     {
                         entregados++;
                     }

@@ -7,21 +7,27 @@
                 <th>Nombre</th>
                 <th>Direccion</th>
                 <th>Telefono</th>
+                <th>Vehiculo</th>
                 <th>Eliminar</th>
+                <th>Editar</th>
             </tr>
             @foreach (var cadete in Model)
             {
         <tr>
-
             <td>@cadete.Nombre</td>
             <td>@cadete.Direccion</td>
             <td>@cadete.Telefono</td>
+            <td>@cadete.Vehiculo</td>
             <td>
                 <form asp-action="EliminarCadete" asp-controller="Cadete" method="post" asp-route-id="@cadete.Id">
                     <button class="btn btn-sm btn-danger">🗑️</button>
                 </form>
             </td>
-            
+            <td>
+                <form asp-action="ObtenerCadete" asp-controller="Cadete" method="post" asp-route-id="@cadete.Id">
+                    <button class="btn btn-sm btn-warning">✏️</button>
+                </form>
+            </td>
         </tr>
             }
         </table>

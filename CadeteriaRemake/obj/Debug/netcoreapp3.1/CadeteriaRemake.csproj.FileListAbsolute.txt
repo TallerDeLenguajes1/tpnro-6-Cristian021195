@@ -22,7 +22,6 @@ D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian02
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cadete\Index.cshtml.g.cs
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cadete\ModificacionCadete.cshtml.g.cs
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\AltaCliente.cshtml.g.cs
-D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\BajaCliente.cshtml.g.cs
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Index.cshtml.g.cs
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\ModificacionCliente.cshtml.g.cs
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
@@ -61,4 +60,9 @@ D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian02
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\CadeteriaRemake.csproj.CoreCompileInputs.cache
 D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\CadeteriaRemake.MvcApplicationPartsAssemblyInfo.cache
-D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cadete\ListadoCadete.cshtml.g.cs
+D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cadete\AgregarCadete.cshtml.g.cs
+D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cadete\ObtenerCadete.cshtml.g.cs
+D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\AgregarCliente.cshtml.g.cs
+D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\ObtenerCliente.cshtml.g.cs
+D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\BajaModificacion.cshtml.g.cs
+D:\LICENCIATURA EN INFORMATICA\2° AÑO\TALLER DE LENGUAJES 2\tpnro-6-Cristian021195\CadeteriaRemake\obj\Debug\netcoreapp3.1\Razor\Views\Pedido\AgregarPedido.cshtml.g.cs
