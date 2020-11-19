@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CadeteriaRemake.Entidades;
+using CadeteriaRemake.ViewModels;
+using ClienteriaRemake.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
@@ -11,44 +14,27 @@ namespace CadeteriaRemake.Controllers
 {
     public class ClienteController : Controller
     {
+        private RepositorioCliente repo = new RepositorioCliente();
+
+        private readonly IMapper _mapper;
+        public ClienteController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         // GET: ClienteController
+
         public ActionResult Index()
         {
-            List<Cliente> clientes = new List<Cliente>();
-
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+            List<Cliente> clientes = repo.obtenerClientes(1);
+            List<ClienteViewModel> clientesVM = _mapper.Map<List<ClienteViewModel>>(clientes);
+            if (clientesVM.Count > 0)
             {
-                Server = "localhost",
-                Database = "cadeteria",
-                UserID = "root",
-                Password = "",
-                Port = 3306,
-            };
-            using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
+                return View(clientesVM);
+            }
+            else
             {
-                try
-                {
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"SELECT id_cliente ,nombre, direccion, telefono FROM clientes WHERE estado = '1'", connection);
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Cliente aux = new Cliente();
-                            aux.Id = reader.GetString("id_cliente");
-                            aux.Nombre = reader.GetString("nombre");
-                            aux.Direccion = reader.GetString("direccion");
-                            aux.Telefono = reader.GetString("telefono");
-                            clientes.Add(aux);
-                        }
-                    }
-                    return View(clientes);
-                }
-                catch (Exception exception)
-                {
-                    string resp = exception.Message;
-                    return View();
-                }
+                return View(null);
             }
         }
 
@@ -60,169 +46,76 @@ namespace CadeteriaRemake.Controllers
         [HttpPost]
         public ActionResult AltaCliente(Cliente cliente)
         {
-
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+            if (repo.altaCliente(cliente))
             {
-                Server = "localhost",
-                Database = "cadeteria",
-                UserID = "root",
-                Password = "",
-                Port = 3306,
-            };
-            using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
+                return Redirect("~/Cliente");
+            }
+            else
             {
-                try
-                {
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"INSERT INTO clientes (nombre, direccion, telefono, estado) VALUES ('{cliente.Nombre}','{cliente.Direccion}','{cliente.Telefono}', '1')", connection);
-                    var res = cmd.ExecuteNonQuery();
-                    connection.Close();
-                    //return View(cadete);
-                    return Redirect("~/Cliente");
-                }
-                catch (Exception exception)
-                {
-                    string resp = exception.Message;
-                    return View();
-                }
-            }//llego un cadete
+                return Redirect("~/Cliente");
+            }
         }
         public ActionResult BajaModificacion()
         {
-            List<Cliente> clientes = new List<Cliente>();
 
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+            List<Cliente> clientes = repo.obtenerClientes(1);
+            List<ClienteViewModel> clientesVM = _mapper.Map<List<ClienteViewModel>>(clientes);
+            if (clientesVM.Count > 0)
             {
-                Server = "localhost",
-                Database = "cadeteria",
-                UserID = "root",
-                Password = "",
-                Port = 3306,
-            };
-            using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"SELECT id_cliente ,nombre, direccion, telefono FROM clientes", connection);
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Cliente aux = new Cliente();
-                            aux.Id = reader.GetString("id_cliente");
-                            aux.Nombre = reader.GetString("nombre");
-                            aux.Direccion = reader.GetString("direccion");
-                            aux.Telefono = reader.GetString("telefono");
-                            clientes.Add(aux);
-                        }
-                    }
-                    return View(clientes);
-                }
-                catch (Exception exception)
-                {
-                    string resp = exception.Message;
-                    return View();
-                }
+                return View(clientesVM);
             }
+            else
+            {
+                return View(null);
+            }
+
+            /*List<Cliente> clientes = repo.obtenerClientes("SELECT id_cliente ,nombre, direccion, telefono FROM clientes");
+            if(clientes.Count > 0)
+            {
+                return View(clientes);
+            }
+            else
+            {
+                return View(null);
+            }*/
         }
 
         [HttpPost]
         public ActionResult EliminarCliente(string id)
         {
-
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+            if(repo.eliminarCliente(id))
             {
-                Server = "localhost",
-                Database = "cadeteria",
-                UserID = "root",
-                Password = "",
-                Port = 3306,
-            };
-            using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
+                return Redirect("~/Cliente");
+            }
+            else
             {
-                try
-                {
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"DELETE FROM clientes WHERE id_cliente = '{id}'", connection);
-                    var res = cmd.ExecuteNonQuery();
-                    connection.Close();
-                    return Redirect("~/Cliente");
-                }
-                catch (Exception exception)
-                {
-                    string resp = exception.Message;
-                    return Redirect("~/Cliente");
-                }
+                return Redirect("~/Cliente");
             }
         }
 
         [HttpPost]
         public ActionResult ModificacionCliente(Cliente cliente)
         {
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+            if (repo.modificacionCliente(cliente))
             {
-                Server = "localhost",
-                Database = "cadeteria",
-                UserID = "root",
-                Password = "",
-                Port = 3306,
-            };
-            using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
+                return Redirect("~/Cliente");
+            }
+            else
             {
-                try
-                {
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"UPDATE clientes SET nombre = '{cliente.Nombre}', direccion = '{cliente.Direccion}', telefono= '{cliente.Telefono}', estado= '{cliente.Estado}' WHERE id_cliente = '{cliente.Id}'", connection);
-                    var res = cmd.ExecuteNonQuery();
-                    connection.Close();
-                    //return View(cadete);
-                    return Redirect("~/Cliente");
-                }
-                catch (Exception exception)
-                {
-                    string resp = exception.Message;
-                    return Redirect("~/Cliente");
-                }
+                return Redirect("~/Cliente");
             }
         }
 
         [HttpPost]
         public ActionResult ObtenerCliente(string id)
         {
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder()
+            if (id != null || id != "")
             {
-                Server = "localhost",
-                Database = "cadeteria",
-                UserID = "root",
-                Password = "",
-                Port = 3306,
-            };
-            using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
+                return View(repo.obtenerCliente(id));
+            }
+            else
             {
-                try
-                {
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"SELECT id_cliente ,nombre, direccion, telefono, estado FROM clientes WHERE id_cliente = '{id}'", connection);//WHERE id_cliente = '{id}'
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        Cliente aux = new Cliente();
-                        while (reader.Read())
-                        {
-                            aux.Id = reader.GetString("id_cliente");
-                            aux.Nombre = reader.GetString("nombre");
-                            aux.Direccion = reader.GetString("direccion");
-                            aux.Telefono = reader.GetString("telefono");
-                            aux.Estado = reader.GetInt32("estado");
-                        }
-                        return View(aux);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    string resp = exception.Message;
-                    return Redirect("~/Cliente");
-                }
+                return View(null);
             }
         }
     }

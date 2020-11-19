@@ -4,13 +4,13 @@ using System.Text;
 
 namespace CadeteriaRemake.Entidades
 {
-    enum tipo_pedido
+    public enum tipo_pedido
     {
         expres,
         dedicado,
         ecologico
     }
-    public class Pedido: Cliente
+    public class Pedido
     {
         //private Random rand = new Random();
         private string numero;
@@ -19,6 +19,7 @@ namespace CadeteriaRemake.Entidades
         private bool estado_pedido;
         private bool cupon;
         private Cliente cliente;
+        private Cadete cadete;
 
         public Pedido(Cliente cliente) {//composicion
             this.cliente = cliente;
@@ -26,10 +27,11 @@ namespace CadeteriaRemake.Entidades
 
         public string Numero { get => numero; set => numero = value; }
         public string Observacion { get => observacion; set => observacion = value; }
-        internal tipo_pedido TipoPedido { get => tipoPedido; set => tipoPedido = value; }
+        public tipo_pedido TipoPedido { get => tipoPedido; set => tipoPedido = value; }
         public bool Estado_pedido { get => estado_pedido; set => estado_pedido = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
         public bool Cupon { get => cupon; set => cupon = value; }
+        public Cadete Cadete { get => cadete; set => cadete = value; }
 
         public double costo() {
             double estandar = 150;

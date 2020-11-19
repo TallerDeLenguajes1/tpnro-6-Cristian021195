@@ -14,11 +14,11 @@
                 <!--Podemos dejar los data vacios-->
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="btn btn-transparent" type="button">
-                        <!-- navbar-toggler => btn btn-transparent -->
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="d-none" id="navbarSupportedContent">
+                    <!--<button class="btn btn-transparent" type="button">
+    navbar-toggler => btn btn-transparent -->
+                    <!-- <span class="navbar-toggler-icon"></span>
+    </button>-->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- collapse navbar-collapse => d-none -->
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -36,7 +36,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="Index">Listado de Cadetes</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="AgregarCadete">Alta</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="BajaCadete">Modificacion y Baja</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cadete" asp-action="BajaModificacion">Modificacion y Baja</a>
                                 </ul>
                             </li>
 
@@ -58,12 +58,12 @@
                                     Pedidos
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="AltaPedido">Alta</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="Index">Pedidos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="AgregarPedido">Alta</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="BajaPedido">Baja</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="ModificacionPedido">Modificacion</a>
                                 </ul>
                             </li>
-
                         </ul>
                     </div>
                 </div>
