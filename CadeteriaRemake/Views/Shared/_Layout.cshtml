@@ -1,23 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@model CadeteriaRemake.Entidades.Usuario;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CadeteriaRemake</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body>
     <header>
         <div class="container-fluid bg-primary">
-            <nav class="container navbar navbar-expand-lg navbar-dark bg-primary" data-toggle-duration="300" data-side-color="dark" data-letter-color="">
+            <nav class="container navbar navbar-expand-lg navbar-dark bg-primary mb-4" data-toggle-duration="300" data-side-color="dark" data-letter-color="">
                 <!--Podemos dejar los data vacios-->
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Navbar</a>
                     <!--<button class="btn btn-transparent" type="button">
-    navbar-toggler => btn btn-transparent -->
+                    navbar-toggler => btn btn-transparent -->
                     <!-- <span class="navbar-toggler-icon"></span>
-    </button>-->
+                    </button>-->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- collapse navbar-collapse => d-none -->
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -60,16 +61,44 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="Index">Pedidos</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="AgregarPedido">Alta</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="BajaPedido">Baja</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="ModificacionPedido">Modificacion</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="BajaModificacion">Modificacion y Baja</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pedido" asp-action="InformeCadetePedido">Informe Cadete / Jornal</a>
                                 </ul>
                             </li>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+                                Iniciar Sesion
+                            </button>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" asp-controller="Home" asp-action="InicioSesion">
+                        <label>Usario</label>
+                        <input type="text" class="form-control" placeholder="Usuario..." maxlength="20" asp-for="Nombre_usuario" required />
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Contraseña..." maxlength="10" asp-for="Contra" required />
+                        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

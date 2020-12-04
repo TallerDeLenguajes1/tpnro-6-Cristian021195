@@ -17,14 +17,15 @@ namespace CadeteriaRemake
             CreateMap<Cliente, ClienteViewModel>().ReverseMap();
             CreateMap<Pedido, PedidoViewModel>().ReverseMap();
             CreateMap<Pedido, AltaPedidoViewModel>().ReverseMap();
-            CreateMap<CadeteViewModel, SelectListItem>().ForMember(
+            CreateMap<Pedido, EditarPedidoViewModel>().ReverseMap();
+            CreateMap<Cadete, SelectListItem>().ForMember(
                     dest => dest.Text, origen => origen.MapFrom(src => src.Nombre)
                 )
                 .ForMember(
                     dest => dest.Value, origen => origen.MapFrom(src => src.Id)
                 );
 
-            CreateMap<ClienteViewModel, SelectListItem>().ForMember(
+            CreateMap<Cliente, SelectListItem>().ForMember(
                     dest => dest.Text, origen => origen.MapFrom(src => src.Nombre)
                 )
                 .ForMember(

@@ -10,7 +10,6 @@ namespace CadeteriaRemake.Models
 {
     public class RepositorioCadete
     {
-        //private DBContextCadeteria = private new DBContextCadeteria();
         public List<Cadete> obtenerCadetes(int estado)
         {
             List<Cadete> cadetes = new List<Cadete>();
@@ -33,7 +32,6 @@ namespace CadeteriaRemake.Models
                 Port = 3306,
             };
             using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
-            //using (MySqlConnection connection = GetConnection())
             {
                 try
                 {
@@ -80,7 +78,13 @@ namespace CadeteriaRemake.Models
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"INSERT INTO cadetes (nombre, direccion, telefono, vehiculo, estado) VALUES ('{cadete.Nombre}','{cadete.Direccion}','{cadete.Telefono}','{cadete.Vehiculo}', '1')", connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO cadetes (nombre, direccion, telefono, vehiculo, estado) VALUES (@nombre, @direccion, @telefono, @vehiculo, @estado)", connection);
+                    cmd.Parameters.AddWithValue("@nombre", cadete.Nombre);
+                    cmd.Parameters.AddWithValue("@direccion", cadete.Direccion);
+                    cmd.Parameters.AddWithValue("@telefono", cadete.Telefono);
+                    cmd.Parameters.AddWithValue("@vehiculo", cadete.Vehiculo);
+                    cmd.Parameters.AddWithValue("@estado", 1);
+                    
                     var res = cmd.ExecuteNonQuery();
                     connection.Close();
 
@@ -111,7 +115,8 @@ namespace CadeteriaRemake.Models
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"DELETE FROM cadetes WHERE id_cadete = '{id}'", connection);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM cadetes WHERE id_cadete = @id", connection);
+                    cmd.Parameters.AddWithValue("@id", id);
                     var res = cmd.ExecuteNonQuery();
                     connection.Close();
                     return true;
@@ -140,7 +145,8 @@ namespace CadeteriaRemake.Models
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"SELECT id_cadete ,nombre, direccion, telefono, vehiculo, estado FROM cadetes WHERE id_cadete = '{id}'", connection);
+                    MySqlCommand cmd = new MySqlCommand("SELECT id_cadete ,nombre, direccion, telefono, vehiculo, estado FROM cadetes WHERE id_cadete = @id", connection);
+                    cmd.Parameters.AddWithValue("@id", id);
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         Cadete cadete = new Cadete();

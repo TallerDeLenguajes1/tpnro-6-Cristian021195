@@ -46,6 +46,7 @@ namespace CadeteriaRemake.Controllers
         [HttpPost]
         public ActionResult AltaCliente(Cliente cliente)
         {
+            cliente.Estado = 1;
             if (repo.altaCliente(cliente))
             {
                 return Redirect("~/Cliente");
@@ -68,16 +69,6 @@ namespace CadeteriaRemake.Controllers
             {
                 return View(null);
             }
-
-            /*List<Cliente> clientes = repo.obtenerClientes("SELECT id_cliente ,nombre, direccion, telefono FROM clientes");
-            if(clientes.Count > 0)
-            {
-                return View(clientes);
-            }
-            else
-            {
-                return View(null);
-            }*/
         }
 
         [HttpPost]
@@ -85,11 +76,11 @@ namespace CadeteriaRemake.Controllers
         {
             if(repo.eliminarCliente(id))
             {
-                return Redirect("~/Cliente");
+                return Redirect("~/Cliente/BajaModificacion");
             }
             else
             {
-                return Redirect("~/Cliente");
+                return Redirect("~/Cliente/BajaModificacion");
             }
         }
 
@@ -98,11 +89,11 @@ namespace CadeteriaRemake.Controllers
         {
             if (repo.modificacionCliente(cliente))
             {
-                return Redirect("~/Cliente");
+                return Redirect("~/Cliente/BajaModificacion");
             }
             else
             {
-                return Redirect("~/Cliente");
+                return Redirect("~/Cliente/BajaModificacion");
             }
         }
 

@@ -1,24 +1,22 @@
 ﻿@model List<CadeteriaRemake.ViewModels.ClienteViewModel>
-
-    <div class="row">
-        <!-- List<CadeteriaRemake.Entidades.Cliente> -->
-        <div class="col-md-6 mx-auto">
-            <table class="table table-striped">
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+            </tr>
+            @foreach (var cliente in Model)
+            {
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Telefono</th>
+                    <td>@cliente.Id</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Direccion</td>
+                    <td>@cliente.Telefono</td>
                 </tr>
-                @foreach (var cliente in Model)
-                {
-                    <tr>
-                        <td>@cliente.Id</td>
-                        <td>@cliente.Nombre</td>
-                        <td>@cliente.Direccion</td>
-                        <td>@cliente.Telefono</td>
-                    </tr>
-                }
-            </table>
-        </div>
+            }
+        </table>
     </div>
+</div>

@@ -46,6 +46,14 @@
               "target": "Package",
               "version": "[8.1.0, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.22, )"

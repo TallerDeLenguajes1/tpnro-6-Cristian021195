@@ -31,7 +31,6 @@ namespace ClienteriaRemake.Models
                 Port = 3306,
             };
             using (MySqlConnection connection = new MySqlConnection(builder.ConnectionString))
-            //using (MySqlConnection connection = GetConnection())
             {
                 try
                 {
@@ -77,11 +76,13 @@ namespace ClienteriaRemake.Models
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"INSERT INTO clientes (nombre, direccion, telefono, vehiculo, estado) VALUES ('{cliente.Nombre}','{cliente.Direccion}','{cliente.Telefono}', '1')", connection);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO clientes (nombre, direccion, telefono, estado) VALUES (@nombre, @direccion, @telefono, @estado)", connection);
+                    cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                    cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
+                    cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
+                    cmd.Parameters.AddWithValue("@estado", cliente.Estado);
                     var res = cmd.ExecuteNonQuery();
                     connection.Close();
-
-                    //return Redirect("~/Cliente");
                     return true;
                 }
                 catch (Exception exception)
@@ -108,7 +109,8 @@ namespace ClienteriaRemake.Models
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"DELETE FROM clientes WHERE id_cliente = '{id}'", connection);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM clientes WHERE id_cliente = @id", connection);
+                    cmd.Parameters.AddWithValue("@id", id);
                     var res = cmd.ExecuteNonQuery();
                     connection.Close();
                     return true;
@@ -137,7 +139,8 @@ namespace ClienteriaRemake.Models
                 try
                 {
                     connection.Open();
-                    MySqlCommand cmd = new MySqlCommand($"SELECT id_cliente ,nombre, direccion, telefono, estado FROM clientes WHERE id_cliente = '{id}'", connection);
+                    MySqlCommand cmd = new MySqlCommand("SELECT id_cliente ,nombre, direccion, telefono, estado FROM clientes WHERE id_cliente = @id", connection);
+                    cmd.Parameters.AddWithValue("@id", id);
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         Cliente cliente = new Cliente();

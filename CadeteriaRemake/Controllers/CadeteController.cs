@@ -27,7 +27,6 @@ namespace CadeteriaRemake.Controllers
             List<Cadete> cadetes = repo.obtenerCadetes(1);
             List<CadeteViewModel> cadetesVM = _mapper.Map<List<CadeteViewModel>>(cadetes);
             return View(cadetesVM);
-
         }
 
 
@@ -45,8 +44,6 @@ namespace CadeteriaRemake.Controllers
         }
         public ActionResult BajaModificacion()
         {
-            /*List<Cadete> cadetes = repo.obtenerCadetes("SELECT id_cadete ,nombre, direccion, telefono, vehiculo FROM cadetes");
-            return View(cadetes);*/
             List<Cadete> cadetes = repo.obtenerCadetes(0);
             List<CadeteViewModel> cadetesVM = _mapper.Map<List<CadeteViewModel>>(cadetes);
             return View(cadetesVM);
@@ -56,11 +53,11 @@ namespace CadeteriaRemake.Controllers
         public ActionResult EliminarCadete(string id) {
             if (repo.eliminarCadete(id))
             {
-                return Redirect("~/Cadete");
+                return Redirect("~/Cadete/BajaModificacion");
             }
             else
             {
-                return Redirect("~/Cadete");
+                return Redirect("~/Cadete/BajaModificacion");
             }
         }
 
@@ -69,11 +66,11 @@ namespace CadeteriaRemake.Controllers
         {
             if (repo.modificacionCadete(cadete))
             {
-                return Redirect("~/Cadete");
+                return Redirect("~/Cadete/BajaModificacion");
             }
             else
             {
-                return Redirect("~/Cadete");
+                return Redirect("~/Cadete/BajaModificacion");
             }            
         }
 

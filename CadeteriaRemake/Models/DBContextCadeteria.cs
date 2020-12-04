@@ -11,17 +11,6 @@ namespace CadeteriaRemake.Models
 {
     public class DBContextCadeteria : DbContext
     {
-        /*public string ConnectionString { get; set; }
-
-        public DBContextCadeteria(string connectionString)
-        {
-            this.ConnectionString = connectionString;
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(ConnectionString);
-        }*/
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");

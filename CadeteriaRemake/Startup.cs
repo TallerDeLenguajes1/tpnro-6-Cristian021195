@@ -25,6 +25,8 @@ namespace CadeteriaRemake
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
+            services.AddMemoryCache();
             services.AddControllersWithViews();
             services.AddAutoMapper(typeof (CadeteriaRemake.MapperProfile));//al servicio le inyectamos una clase mapeador.
             //services.Add(new ServiceDescriptor(typeof(DBContextCadeteria), new DBContextCadeteria(Configuration.GetConnectionString("DefaultConnection"))));
@@ -49,6 +51,8 @@ namespace CadeteriaRemake
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

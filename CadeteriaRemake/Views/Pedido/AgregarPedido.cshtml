@@ -2,7 +2,7 @@
 <form asp-action="AltaPedido" method="post"
       class="form col-sm-12 col-md-8 col-lg-6 mx-auto shadow p-3 mb-4 bg-white rounded aplicable">
     <div class="form-group">
-        <label asp-for="@Model.observacion">Observacion</label>
+        <label asp-for="@Model.observacion"></label>
         <textarea class="form-control" placeholder="Ingrese la observacion" asp-for="@Model.observacion"></textarea>
     </div>
     <div class="form-group">
@@ -15,17 +15,17 @@
     </div>
     <div class="form-group">
         <div class="custom-control custom-switch">
-            <label class="custom-control-label" for="cupon">¿Tiene Cupon?</label>
             <input type="checkbox" class="custom-control-input" asp-for="@Model.cupon" id="cupon">
+            <label class="custom-control-label" for="cupon">¿Tiene Cupon?</label>
         </div>
     </div>
     <div class="form-group">
         <label asp-for="ClienteId">Cliente</label>
-        <select asp-for="ClienteId" asp-items="@Model.clientes"></select>
+        <select asp-for="ClienteId" asp-items="@Model.clientes" class="form-control"></select>
     </div>
     <div class="form-group">
         <label asp-for="CadeteId">Cadete</label>
-        <select asp-for="CadeteId" asp-items="@Model.clientes"></select>
+        <select asp-for="CadeteId" asp-items="@Model.cadetes" class="form-control"></select>
     </div>
     <button type="submit" class="btn btn-block btn-primary">Dar Alta</button>
 </form>

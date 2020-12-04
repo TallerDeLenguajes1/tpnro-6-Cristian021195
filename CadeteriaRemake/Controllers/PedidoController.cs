@@ -24,14 +24,16 @@ namespace CadeteriaRemake.Controllers
         {
             _mapper = mapper;
         }
-
-        
-
         public ActionResult Index()
         {
             List<Pedido> pedidos = repoPedido.obtenerPedidos();
             List<PedidoViewModel> pedidosVM = _mapper.Map<List<PedidoViewModel>>(pedidos);
             return View(pedidosVM);
+        }
+        public ActionResult InformeCadetePedido()
+        {
+            List<PedidoViewModel> pedidos = repoPedido.obtenerInforme();
+            return View(pedidos);
         }
         public ActionResult AgregarPedido()
         {
@@ -43,16 +45,67 @@ namespace CadeteriaRemake.Controllers
             AltaPedidoViewModel pedidoVM = new AltaPedidoViewModel();
             pedidoVM.cadetes = optionsCadeteVM;
             pedidoVM.clientes = optionsClienteVM;
-            //List<Cliente> clientes = repoCliente.obtenerClientes();
             return View(pedidoVM);
         }
-        public ActionResult BajaPedido()
+
+
+        [HttpPost]
+        public ActionResult AltaPedido(AltaPedidoViewModel pedido)
         {
-            return View();
+            if (repoPedido.altaPedido(pedido))
+            {
+                return Redirect("~/Pedido");
+            }
+            else
+            {
+                return Redirect("~/Pedido");
+            }
         }
-        public ActionResult ModificacionPedido()
+
+        [HttpPost]
+        public ActionResult ModificacionPedido(EditarPedidoViewModel pedido)
         {
-            return View();
+            if (repoPedido.editarPedido(pedido))
+            {
+                return Redirect("~/Pedido/BajaModificacion");
+            }
+            else
+            {
+                return Redirect("~/Pedido/BajaModificacion");
+            }
         }
+
+
+        public ActionResult BajaModificacion()
+        {
+            List<Pedido> pedidos = repoPedido.obtenerPedidos();
+            List<PedidoViewModel> pedidosVM = _mapper.Map<List<PedidoViewModel>>(pedidos);
+            return View(pedidosVM);
+        }
+
+        [HttpPost]
+        public ActionResult ObtenerPedido(string id)//AltaPedidoViewModel pedido
+        {
+            List<Cadete> cadetes = repoCadete.obtenerCadetes(1);
+            List<SelectListItem> optionsCadeteVM = _mapper.Map<List<SelectListItem>>(cadetes);
+            EditarPedidoViewModel pedidoVM = new EditarPedidoViewModel();
+            pedidoVM = repoPedido.obtenerPedido(id);
+            pedidoVM.cadetes = optionsCadeteVM;
+            return View(pedidoVM);
+        }
+
+        [HttpPost]
+        public ActionResult EliminarPedido(string id)
+        {
+            if (repoPedido.eliminarPedido(id))
+            {
+                return Redirect("~/Pedido/BajaModificacion");
+            }
+            else
+            {
+                return Redirect("~/Pedido/BajaModificacion");
+            }
+        }
+
     }
 }

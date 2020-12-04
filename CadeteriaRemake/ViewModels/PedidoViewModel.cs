@@ -17,5 +17,6 @@ namespace CadeteriaRemake.ViewModels
         public Cliente cliente;
         public Cadete cadete;
         public double costo;
+        
     }
 }

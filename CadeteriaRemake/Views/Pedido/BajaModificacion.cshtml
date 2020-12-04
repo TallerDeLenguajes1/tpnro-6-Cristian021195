@@ -1,0 +1,42 @@
+﻿@model List<CadeteriaRemake.ViewModels.PedidoViewModel>
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Observacion</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Cupon</th>
+                <th>Cliente</th>
+                <th>Cadete</th>
+                <th>Costo</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+            </tr>
+            @foreach (var pedido in Model)
+            {
+            <tr>
+                <td>@pedido.numero</td>
+                <td>@pedido.observacion</td>
+                <td>@pedido.tipoPedido</td>
+                <td>@pedido.estado_pedido</td>
+                <td>@pedido.cupon</td>
+                <td>@pedido.cliente.Nombre</td>
+                <td>@pedido.cadete.Nombre</td>
+                <td>@pedido.costo</td>
+                <td>
+                    <form asp-action="EliminarPedido" asp-controller="Pedido" method="post" asp-route-id="@pedido.numero">
+                        <button class="btn btn-sm btn-danger">🗑️</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="ObtenerPedido" asp-controller="Pedido" method="post" asp-route-id="@pedido.numero">
+                        <button class="btn btn-sm btn-warning">✏️</button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>
