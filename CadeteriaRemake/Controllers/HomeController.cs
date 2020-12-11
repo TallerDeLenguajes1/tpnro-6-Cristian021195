@@ -41,19 +41,19 @@ namespace CadeteriaRemake.Controllers
         }
 
         [HttpPost]
-        public IActionResult InicioSesion(Usuario user)
+        public IActionResult InicioSesion(Usuario user)// cristian021195 021195cd
         {
             Usuario res = repoUsuario.obtenerUsuario(user);
             bool valido = BCrypt.Net.BCrypt.Verify(user.Contra, res.Contra);
             if (valido)
             {
-                HttpContext.Session.SetInt32("id_usuario", user.Id_usuario);
-                HttpContext.Session.SetString("usuario", user.Nombre_usuario);
-                //HttpContext.Session.SetString("tipo", user.Tipo);
+                HttpContext.Session.SetInt32("id_usuario", res.Id_usuario);
+                HttpContext.Session.SetString("usuario", res.Nombre_usuario);
+                HttpContext.Session.SetString("tipo", res.Tipo);
 
                 ViewBag.id_usuario = HttpContext.Session.GetInt32("id_usuario");
                 ViewBag.usuario = HttpContext.Session.GetString("usuario");
-                //ViewBag.tipo = HttpContext.Session.GetString("tipo");
+                ViewBag.tipo = HttpContext.Session.GetString("tipo");
 
                 return View();
             }

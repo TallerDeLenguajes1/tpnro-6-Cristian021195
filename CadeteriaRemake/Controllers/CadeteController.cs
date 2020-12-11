@@ -20,7 +20,7 @@ namespace CadeteriaRemake.Controllers
             _mapper = mapper;
         }
 
-        private RepositorioCadete repo = new RepositorioCadete();        
+        private RepositorioCadete repo = new RepositorioCadete();
 
         public ActionResult Index()
         {
